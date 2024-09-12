@@ -32,7 +32,7 @@ load.confounders <- function(opt, phenotypes) {
       	if (!is.null(opt$confounderfile)) {
       		    print("Loading confounders from confounder file ...")
       		    confs <- fread(opt$confounderfile, sep=',', header=TRUE, data.table=FALSE)
-      	      confs <- lapply(confs,function(x) type.convert(as.character(x)))
+      	      confs <- lapply(confs,function(x) type.convert(as.character(x), as.is = TRUE))
       	      confs <- as.data.frame(confs)
       
       		    ## find userID column and change name to userID
