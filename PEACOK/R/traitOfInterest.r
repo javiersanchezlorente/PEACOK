@@ -40,7 +40,7 @@ load.trait.of.interest <- function(opt, phenotypes) {
         userId.index <- which(names(data) == opt$userId)
         names(data) <- paste0("x", gsub("[-|.]","_",names(data)))
         names(data)[userId.index] <- opt$userId
-	      data <- data.frame(lapply(data,function(x) type.convert(as.character(x))))
+	      data <- data.frame(lapply(data,function(x) type.convert(as.character(x), as.is = TRUE)))
     }
 
     colnames(data)[1] <- "userID"
