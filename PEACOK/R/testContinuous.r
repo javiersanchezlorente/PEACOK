@@ -31,6 +31,7 @@ test.continuous <- function(opt, vl, varName, varType, thisdata, phenoStartIdx) 
 .test.continuous2 <- function(opt, vl, varName, varType, thisdata, phenoStartIdx) {
 	  cat("CONTINUOUS || ")
 	  pheno <- thisdata[,phenoStartIdx:ncol(thisdata)]
+	  pheno <- as.data.frame(lapply(pheno, function(x) as.numeric(as.character(x))))
 	  isExposure <- get.is.exposure(vl, varName)
 
   	if (!is.null(dim(pheno))) {
