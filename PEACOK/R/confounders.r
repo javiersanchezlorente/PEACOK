@@ -46,8 +46,7 @@ load.confounders <- function(opt, phenotypes) {
     	        ##### extract confounders from data file
               confs <- fread(opt$phenofile, select=.PEACOK2UKB(confNames,opt$userId), sep=',', header=TRUE, data.table=FALSE)
               names(confs) <- confNames
-    	        confs <- lapply(confs,function(x) type.convert(as.character(x)))
-    	        confs <- as.data.frame(confs)
+	      confs <- data.frame(lapply(confs,function(x) type.convert(as.character(x), as.is = TRUE)))
 
     	        ##### process genetic batch to create genetic chip variable
               if (opt$genetic == TRUE) {
