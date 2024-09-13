@@ -24,7 +24,9 @@
 test.integer <- function(opt, vl, varName, varType, thisdata, phenoStartIdx) {
   	cat("INTEGER || ")
   	pheno <- thisdata[,phenoStartIdx:ncol(thisdata)]
-    pheno <- as.data.frame(lapply(pheno, function(x) as.numeric(as.character(x))))
+    #pheno <- as.data.frame(lapply(pheno, function(x) as.numeric(as.character(x))))
+    pheno <- as.data.frame(lapply(pheno, function(x) suppressWarnings(as.numeric(as.character(x)))))
+	  
   	isExposure <- get.is.exposure(vl, varName)
   	if (is.numeric(as.matrix(pheno))) {
   	    pheno <- .reassignValue(vl, pheno, varName)
