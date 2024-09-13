@@ -40,7 +40,8 @@
     ## read in the right table columns
     data <- fread(opt$phenofile, select=.PEACOK2UKB(indVars,opt$userId), sep=',', header=TRUE, data.table=FALSE)
     names(data) <- indVars 
-  	data <- data.frame(lapply(data,function(x) type.convert(as.character(x))))
+  	#data <- data.frame(lapply(data,function(x) type.convert(as.character(x))))
+    data <- data.frame(lapply(data,function(x) type.convert(as.character(x), as.is = TRUE)))
   	colnames(data)[1] <- "userID"
   	return(data)
 }
